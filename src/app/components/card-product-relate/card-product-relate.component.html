@@ -1,0 +1,23 @@
+<p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+    <ng-template let-item pTemplate="item">
+        <div class="cart-form mr-2 pt-2 pl-2 pr-2" >
+            <a class="text-center">
+                <img class="" style="width:100%; max-width: 200px; min-height: 170px; max-height: 170px;" src="{{item.Imgs[0].ImgName}}" />
+            </a>
+            <div class="card-body text-black">
+                <div class="d-flex justify-content-center text-center">
+                    <p class="product-name">
+                        <a class="text-black" style="font-family: sans-serif;">{{item.ProductName}}</a>
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h4>{{item.Price | currency:'VND'}}</h4>
+                </div>
+                <div class="row justify-content-center text-center">
+                    <a [routerLink]="['/productdetail', item.ProductCode]" class="btn btn-outline-primary col-lg-5 col-md-5 col-sm-5 col-xs-5 col-5" >Xem</a>
+                    <button (click)="Add(item)" (click)="openSnackBar(1, item.ProductName)" class="btn btn-danger col-lg-5 col-md-5 col-sm-5 col-xs-5 col-5">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
