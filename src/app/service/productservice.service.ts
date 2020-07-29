@@ -42,12 +42,13 @@ export class ProductserviceService {
     });
   }
   getProductbyType(pivot, callback) {
+    const url = 'http://52.163.93.79/ware_svc/api/medical/product';
     if (callback.previousType !== pivot.Id) {
       callback.previousType = pivot.Id;
       callback.products = new Array<Product>();
       callback.From = 0;
     }
-     this.http.post('http://52.163.93.79/ware_svc/api/medical/product', pivot).subscribe((response) => {
+     this.http.post(url, pivot).subscribe((response) => {
      const temp = response as Array<Product>;
      temp.forEach((item) => {
       callback.From += 1;
